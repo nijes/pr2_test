@@ -10,7 +10,12 @@
 <body>
 
 <h1>Hello World</h1>
-<div style="height=500px; width=200px; border=1px solid red;">div test</div>
+<div style="height=500px; width=200px; border=1px solid red;">
+    {% for region in regions %}
+        <h2>{{ region.regionid}}</h2>
+        <p>{{ region.regionname }}</p>
+    {% endfor %}
+</div>
 
 </body>
 </html>

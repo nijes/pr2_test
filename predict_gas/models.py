@@ -1,6 +1,10 @@
 from django.db import models
 
 
-class region2(models.Model):
-    regionId = models.CharField(max_length=100)
-    regionName = models.CharField(max_length=500)
+class Region(models.Model):
+    regionid = models.IntegerField(db_column='regionId', primary_key=True)  # Field name made lowercase.
+    regionname = models.CharField(db_column='regionName', max_length=45)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'region'

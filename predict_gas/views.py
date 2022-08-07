@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Region
 
 def index(request):
-    return render(request, 'index.html')
+    regions = Region.objects.all()
+    return render(request, 'index.html', {'regions': regions})
 
