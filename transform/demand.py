@@ -13,7 +13,7 @@ driver="com.mysql.cj.jdbc.Driver"
 dbtable="demand"
 
 # df
-demand_df = spark.read.csv('/user/folder/demand/demand.csv', header='true')
+demand_df = spark.read.csv('/predict_gas/raw_data/demand/demand.csv', header='true', encoding='cp949')
 
 # sql table
 demand_df.createOrReplaceTempView('demand_sql')
