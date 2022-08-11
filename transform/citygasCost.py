@@ -9,7 +9,7 @@ from pyspark.sql import SparkSession
 sc = SparkContext()
 spark = SparkSession.builder.getOrCreate()
 
-df = spark.read.format('csv').option('header','true').load('gas_cost.csv')
+df = spark.read.format('csv').option('header','true').load('/predict_gas/raw_data/gas_cost/gas_cost.csv')
 
 #region_id 설정
 user="root"

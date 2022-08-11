@@ -18,7 +18,7 @@ dbtable="avg_temp" #table 이름 맞게 지정
 ######################################################
 
 # csv파일 불러오기
-df = spark.read.format('csv').option('header', 'true').load('temp.csv')
+df = spark.read.format('csv').option('header', 'true').load('/predict_gas/raw_data/temp/temp.csv')
 
 # 일시를 연도, 월을 나눈 후 컬럼 이름 재설정
 df1 = df.select(substring(col('일시'), 1, 4).alias('year')\
