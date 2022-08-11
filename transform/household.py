@@ -29,7 +29,7 @@ month = 12
 for year in range(2001, 2014):
 	  #wb = xl.load_workbook(f'supply/supply{year}.xlsx')
 	  year_zf = str(year%2000).zfill(2)
-	  spark.sparkContext.addFile(f'hdfs:///user/big/supply/supply{year}.xlsx')
+	  spark.sparkContext.addFile(f'hdfs:///predict_gas/raw_data/supply/supply{year}.xlsx')
 
 	  if year < 2004:
 		  pd_df = pd.read_excel(SparkFiles.get(f'supply{year}.xlsx'),f'{month}월')
@@ -104,7 +104,7 @@ for year in range(2001, 2014):
 
 #####################파일(2001~2013)#####################
 #df = spark.read.csv("/user/folder/household/household.csv", header='true')
-df = spark.read.csv("household.csv", header='true')
+df = spark.read.csv("/predict_gas/raw_data/household/household.csv", header='true')
 #df.show()
 
 
