@@ -14,7 +14,7 @@ dbtable="importIndex" #table 이름 맞게 지정
 
 ###### 수입금액지수, 수입물량지수, 수입금액지수 각각에 대한 데이터프레임############
 
-df = spark.read.json('import_price1.json')
+df = spark.read.json('/predict_gas/raw_data/import_price/import_price1.json')
 df_explode = df.select(explode(df.StatisticSearch.row))
 import_price1 = df_explode.select(df_explode.col.TIME, df_explode.col.ITEM_NAME1, df_explode.col.DATA_VALUE)\
 .withColumnRenamed('col.Time', 'time')\
@@ -24,7 +24,7 @@ import_price1 = df_explode.select(df_explode.col.TIME, df_explode.col.ITEM_NAME1
 .where(col('col.ITEM_NAME2')=='계약통화기준')
 #import_price1.show()
 
-df = spark.read.json('import_price2.json')
+df = spark.read.json('/predict_gas/raw_data/import_price/import_price2.json')
 df_explode = df.select(explode(df.StatisticSearch.row))
 import_price2 = df_explode.select(df_explode.col.TIME, df_explode.col.ITEM_NAME1, df_explode.col.DATA_VALUE)\
 .withColumnRenamed('col.Time', 'time')\
@@ -38,7 +38,7 @@ import_price = import_price1.union(import_price2).drop('item')
 
 
 
-df = spark.read.json('import_amount1.json')
+df = spark.read.json('/predict_gas/raw_data/import_amount/import_amount1.json')
 df_explode = df.select(explode(df.StatisticSearch.row))
 import_amount1 = df_explode.select(df_explode.col.TIME, df_explode.col.ITEM_NAME1, df_explode.col.DATA_VALUE)\
 .withColumnRenamed('col.Time', 'time')\
@@ -48,7 +48,7 @@ import_amount1 = df_explode.select(df_explode.col.TIME, df_explode.col.ITEM_NAME
 #import_amount1.show()
 #LNG의 수입물량지수는 20000년 1월부터 기록
 
-df = spark.read.json('import_amount2.json')
+df = spark.read.json('/predict_gas/raw_data/import_amount/import_amount2.json')
 df_explode = df.select(explode(df.StatisticSearch.row))
 import_amount2 = df_explode.select(df_explode.col.TIME, df_explode.col.ITEM_NAME1, df_explode.col.DATA_VALUE)\
 .withColumnRenamed('col.Time', 'time')\
@@ -61,7 +61,7 @@ import_amount = import_amount1.union(import_amount2).drop('item')
 
 
 
-df = spark.read.json('import_cost1.json')
+df = spark.read.json('/predict_gas/raw_data/import_cost/import_cost1.json')
 df_explode = df.select(explode(df.StatisticSearch.row))
 import_cost1 = df_explode.select(df_explode.col.TIME, df_explode.col.ITEM_NAME1, df_explode.col.DATA_VALUE)\
 .withColumnRenamed('col.Time', 'time')\
@@ -71,7 +71,7 @@ import_cost1 = df_explode.select(df_explode.col.TIME, df_explode.col.ITEM_NAME1,
 #import_cost1.show()
 #LNG의 수입물가지수는 20000년 1월부터 기록
 
-df = spark.read.json('import_cost2.json')
+df = spark.read.json('/predict_gas/raw_data/import_cost/import_cost2.json')
 df_explode = df.select(explode(df.StatisticSearch.row))
 import_cost2 = df_explode.select(df_explode.col.TIME, df_explode.col.ITEM_NAME1, df_explode.col.DATA_VALUE)\
 .withColumnRenamed('col.Time', 'time')\
