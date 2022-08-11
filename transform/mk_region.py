@@ -42,7 +42,7 @@ region_insert = [
 #######################################################
 
 insert_df = sc.parallelize(region_insert).toDF(['regionId', 'regionName'])
-#insert_df.show()
+insert_df.show()
 
 insert_df.write.jdbc(url, dbtable, "append", properties={"driver": driver, "user": user, "password": password})
 #region_df.show()
