@@ -12,7 +12,7 @@ url="jdbc:mysql://localhost:3306/phoenix"
 driver="com.mysql.cj.jdbc.Driver"
 dbtable="relativeprice"
 
-producer1 = spark.read.json('/user/folder/producer_price/producer_price1.json')
+producer1 = spark.read.json('/predict_gas/raw_data/producer_price/producer_price1.json')
 producer1.show()
 
 from pyspark.sql.functions import explode, col
@@ -48,7 +48,7 @@ producer_all1 = producer_all1.withColumn('year', col('date').substr(1, 4))\
 .drop('date')
 
 
-producer2 = spark.read.json('/user/folder/producer_price/producer_price2.json')
+producer2 = spark.read.json('/predict_gas/raw_data/producer_price/producer_price2.json')
 producer2.show()
 
 from pyspark.sql.functions import explode, col
