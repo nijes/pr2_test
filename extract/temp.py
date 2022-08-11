@@ -38,7 +38,8 @@ for area in range(17):
     sleep(2)
 
     # 지역 대분류 선택('+'클릭)
-    area_1_select = driver.find_element(By.XPATH, f'/html/body/div[4]/div/div/div/div[2]/ul/li/ul/li[2+{area}]/a[1]')
+    ar_sel = area + 2
+    area_1_select = driver.find_element(By.XPATH, f'/html/body/div[4]/div/div/div/div[2]/ul/li/ul/li[{ar_sel}]/a[1]')
     area_1_select.click()
     sleep(2)
 
