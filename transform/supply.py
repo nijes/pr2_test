@@ -1,5 +1,5 @@
 import pandas as pd
-import openpyxl as xl
+#import openpyxl as xl
 from pyspark.sql.types import *
 from pyspark.sql.functions import monotonically_increasing_id
 #from pyspark.sql.functions import row_number
@@ -10,6 +10,7 @@ from pyspark.sql.functions import when
 from pyspark.sql.functions import lit
 from pyspark.sql import Row
 from pyspark.sql import SparkSession
+from pyspark import SparkFiles
 #from pyspark.sql.window import *
 
 spark =SparkSession.builder.getOrCreate()
@@ -24,19 +25,19 @@ dbtable="supply" #table 이름 맞게 지정
 
 for year in range(2001, 2021):
 	for month in range(1,13):
-		wb = xl.load_workbook(f'supply/supply{year}.xlsx')
+		#wb = xl.load_workbook(f'supply/supply{year}.xlsx')
 		year_zf = str(year%2000).zfill(2)
+		spark.sparkContext.addFile(f'hdfs:///user/big/supply/supply{year}.xlsx')
 
 		if year < 2004:
-			ws = wb[f'{month}월']
+			pd_df = pd.read_excel(SparkFiles.get(f'supply{year}.xlsx'),f'{month}월')
 		elif year < 2012:
-			ws = wb[f'{year_zf}.{month}월']
+			pd_df = pd.read_excel(SparkFiles.get(f'supply{year}.xlsx'),f'{year_zf}.{month}월')
 		else:
-			ws = wb[f'({year_zf}.{month}월)_부피']
+			pd_df = pd.read_excel(SparkFiles.get(f'supply{year}.xlsx'),f'({year_zf}.{month}월)_부피')
 		
-		pd_df = pd.DataFrame(ws.values)
-		pd_df.drop([0,1], inplace=True)
-		
+		pd_df.drop(0, inplace=True)
+	
 		df_schema = StructType([StructField(f"col{i}", StringType(), True) for i in range(len(pd_df.columns))])
 		spark_df = spark.createDataFrame(pd_df, schema=df_schema)
 		
@@ -67,11 +68,11 @@ for year in range(2001, 2021):
 		data_list = []
 		stack = ['initValue']
 		for data in target_data_list:
-		    if data != None:
+		    if data == 'NaN':
+		        pass
+		    else:
 		        stack.pop()
 		        stack.append(data)
-		    else:
-		        pass
 		    data_list.append(stack[0])
 		
 		data_col = [Row(id=str(idx), col0=data) for idx, data in enumerate(data_list)]
