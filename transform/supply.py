@@ -27,7 +27,7 @@ for year in range(2001, 2021):
 	for month in range(1,13):
 		#wb = xl.load_workbook(f'supply/supply{year}.xlsx')
 		year_zf = str(year%2000).zfill(2)
-		spark.sparkContext.addFile(f'hdfs:///user/big/supply/supply{year}.xlsx')
+		spark.sparkContext.addFile(f'hdfs:///predict_gas/raw_data/supply/supply{year}.xlsx')
 
 		if year < 2004:
 			pd_df = pd.read_excel(SparkFiles.get(f'supply{year}.xlsx'),f'{month}월')
