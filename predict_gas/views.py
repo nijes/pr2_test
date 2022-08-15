@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import AvgTemp, CitygasCost, Demand, Heatindex, Household, Importindex, Region, Relativeprice, Supply, Lngimport
-from django.db import connection
 from django.db.models import Count, Avg
 
 
