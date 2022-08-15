@@ -521,11 +521,79 @@ def demandfactor(request):
 
     #################### 도시가스요금 ####################
 
+    citygascost = CitygasCost.objects.values('year', 'regionid') \
+        .annotate(Avg('citygascost')) \
+        .order_by('year')
+    seoul = []
+    pusan = []
+    daegu = []
+    incheon = []
+    gwangju = []
+    daejun = []
+    ulsan = []
+    kyeonggi = []
+    kangwon = []
+    chungbuk = []
+    chungnam = []
+    jeonbuk = []
+    jeonnam = []
+    kyeongbuk = []
+    kyeongnam = []
+    jeju = []
+    sejong = []
+
+    year5 = []
+
+    for col in citygascost:
+
+        if col['regionid'] == 1:
+            seoul.append(col['citygascost__avg'])
+            year5.append(col['year'])
+        elif col['regionid'] == 2:
+            pusan.append(col['citygascost__avg'])
+        elif col['regionid'] == 3:
+            daegu.append(col['citygascost__avg'])
+        elif col['regionid'] == 4:
+            incheon.append(col['citygascost__avg'])
+        elif col['regionid'] == 5:
+            gwangju.append(col['citygascost__avg'])
+        elif col['regionid'] == 6:
+            daejun.append(col['citygascost__avg'])
+        elif col['regionid'] == 7:
+            ulsan.append(col['citygascost__avg'])
+        elif col['regionid'] == 8:
+            kyeonggi.append(col['citygascost__avg'])
+        elif col['regionid'] == 9:
+            kangwon.append(col['citygascost__avg'])
+        elif col['regionid'] == 10:
+            chungbuk.append(col['citygascost__avg'])
+        elif col['regionid'] == 11:
+            chungnam.append(col['citygascost__avg'])
+        elif col['regionid'] == 12:
+            jeonbuk.append(col['citygascost__avg'])
+        elif col['regionid'] == 13:
+            jeonnam.append(col['citygascost__avg'])
+        elif col['regionid'] == 14:
+            kyeongbuk.append(col['citygascost__avg'])
+        elif col['regionid'] == 15:
+            kyeongnam.append(col['citygascost__avg'])
+        elif col['regionid'] == 16:
+            jeju.append(col['citygascost__avg'])
+        elif col['citygascost__avg'] == None:
+            sejong.append(0)
+        else:
+            sejong.append(col['citygascost__avg'])
+
 
 
     return render(request, 'demandfactor.html',
           {'result1': result1, 'supply1': supply1, 'avgtemp1': avgtemp1, 'heatindex1': heatindex1, 'demand1': demand1,
            'household_avg2': household_avg2, 'year2': year2, 'demand_avg2': demand_avg2,
            'gasproducerprice3': gasprice3, 'oilproducerprice3': oilprice3, 'relativeprice3': relativeprice3, 'year3': year3,
-           'importprice_list': importprice_list, 'importamount_list': importamount_list, 'importcost_list': importcost_list
+           'importprice_list': importprice_list, 'importamount_list': importamount_list, 'importcost_list': importcost_list,
+           'seoul': seoul, 'pusan': pusan, 'daegu': daegu, 'incheon': incheon,
+           'gwangju': gwangju, 'daejun': daejun, 'ulsan': ulsan, 'kyeonggi': kyeonggi,
+           'kangwon': kangwon, 'chungbuk': chungbuk, 'chungnam': chungnam,
+           'jeonbuk': jeonbuk, 'jeonnam': jeonnam, 'kyeongbuk': kyeongbuk,
+           'kyeongnam': kyeongnam, 'jeju': jeju, 'sejong': sejong, 'year5': year5
            })
