@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-from dotenv import read_dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-read_dotenv()
 
 SECRET_KEY = 'django-insecure-mxm1a!j#usnx-0$34_&lq1l3!)rqzz4r+&!ume@g%ae9l*38ik'
 
@@ -30,7 +29,7 @@ SECRET_KEY = 'django-insecure-mxm1a!j#usnx-0$34_&lq1l3!)rqzz4r+&!ume@g%ae9l*38ik
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.amazonaws.com']
+ALLOWED_HOSTS = ['.18.182.144.42']
 
 
 # Application definition
@@ -42,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'predict_gas'
+    'predict_gas',
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
