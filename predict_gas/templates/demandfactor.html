@@ -1,0 +1,528 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>문제해결 빅데이터 활용 프로젝트</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/phoenix_logo.png' %}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)
+        <link href="/css/styles.css" rel="stylesheet" />-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <script src="https://code.highcharts.com/modules/data.js"></script>
+        <script src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+    </head>
+
+    <body>
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-lg-5">
+                <img style="width:30px; height:30px;" src="{% static 'assets/phoenix_logo.png' %}">
+                <a class="navbar-brand" href="/">Team Pheonix</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/supply">Supply</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/demand">Demand</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/supplyfactor">SupplyFactor</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/demandfactor">DemandFactor</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- navbar end -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content" class="col-11 mx-auto">
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-white">Dashboard</h1>
+                    </div>
+
+
+                    <!-- Content Row1 -->
+                    <div class="row">
+                        <!-- Graph1 -->
+                        <div class="col-xl-5">
+                            <div class="card shadow mb-4">
+                                <div class="card-header fw-bold">
+                                    평균기온 및 난방지수
+                                </div>
+                                <div class="card-body">
+                                    <!-- 평균기온, 난방지수 & 수요량 버블 그래프 -->
+                                    <figure class="highcharts-figure container-fluid">
+                                            <div id="container1">
+                                            </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Graph1 End -->
+                        <!-- Graph2 -->
+                        <div class="col-xl-7">
+                            <div class="card shadow mb-4">
+                                <div class="card-header fw-bold">
+                                    수요가수
+                                </div>
+                                <div class="card-body">
+                                    <!-- 수요가수, 수요량 막대&선 그래프 -->
+                                    <figure class="highcharts-figure container-fluid">
+                                            <div id="container2">
+                                            </div>
+                                    </figure>
+
+                               </div>
+                            </div>
+                        </div>
+                        <!-- Graph2 End -->
+                    </div>
+                    <!-- Content Row1 End -->
+
+                    <!-- Content Row2 -->
+                    <div class="row">
+                        <!-- Graph3 -->
+                        <div class="col-xl-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header fw-bold">
+                                    상대가격
+                                </div>
+                                <div class="card-body">
+                                    <!-- 기간에 따른 상대가격 변화 그래프 -->
+                                    <figure class="highcharts-figure container-fluid">
+                                            <div id="container3">
+                                            </div>
+                                    </figure>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content Row2 End -->
+
+                    <!-- Content Row3 -->
+                    <div class="row">
+                        <!-- Graph4 -->
+                        <div class="col-xl-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header fw-bold">
+                                    수입금액지수, 수입물량지수, 수입물가지수
+                                </div>
+                                <div class="card-body">
+                                    <!-- 3종 지수 면적 그래프 -->
+                                    <figure class="highcharts-figure container-fluid">
+                                            <div id="container4">
+                                            </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Graph4 End -->
+                        <!-- Graph5 -->
+                        <div class="col-xl-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header fw-bold">
+                                    도시가스요금
+                                </div>
+                                <div class="card-body">
+                                    <!-- 도시가스요금 꺾은선 그래프 -->
+                                    <figure class="highcharts-figure container-fluid">
+                                            <div id="container5">
+                                            </div>
+                                    </figure>
+
+                               </div>
+                            </div>
+                        </div>
+                        <!-- Graph2 End -->
+                    </div>
+                    <!-- Content Row3 End -->
+
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- Main content end -->
+        </div>
+        <!-- Cont Wrapper end -->
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Team Phoenix 2022</p></div>
+        </footer>
+
+    </div>
+    <!-- Page Wrapper end -->
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    </body>
+
+<script>
+ window.onload=function(){
+
+    /*********************** Graph1 - 난방지수&평균기온 ***************************/
+    var data_list1 = []
+        {% for col in result1 %}
+            data_list1.push({ x: {{ col.avgtemp__avg }}, y: {{ col.heatindex__avg }}, z: {{ col.supply__avg }}, name: '{{ col.month }}월'})
+        {% endfor %}
+
+
+    Highcharts.chart('container1', {
+
+        chart: {
+            type: 'bubble',
+            plotBorderWidth: 1,
+            zoomType: 'xy'
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        title: {
+            text: '월별 평균기온, 월별 난방지수 & 월별 수요량'
+        },
+
+        subtitle: {
+            text:  ''
+        },
+
+        accessibility: {
+            point: {
+                valueDescriptionFormat: '{index}. {point.name}, fat: {point.x}g, sugar: {point.y}g, obesity: {point.z}%.'
+            }
+        },
+
+        xAxis: {
+            gridLineWidth: 1,
+            title: {
+                text: '월별 평균기온'
+            },
+            labels: {
+                format: '{value} ºC'
+            },
+            plotLines: [{
+                color: 'black',
+                dashStyle: 'dot',
+                width: 2,
+                value: 65,
+                label: {
+                    rotation: 0,
+                    y: 15,
+                    style: {
+                        fontStyle: 'italic'
+                    },
+                    //text: 'Safe fat intake 65g/day'
+                },
+                zIndex: 3
+            }],
+            accessibility: {
+                rangeDescription: ''
+            }
+        },
+
+        yAxis: {
+            startOnTick: false,
+            endOnTick: false,
+            title: {
+                text: '월별 난방지수 합계'
+            },
+            labels: {
+                format: '{value} '
+            },
+            maxPadding: 0.2,
+            plotLines: [{
+                color: 'black',
+                dashStyle: 'dot',
+                width: 2,
+                value: 50,
+                label: {
+                    align: 'right',
+                    style: {
+                        fontStyle: 'italic'
+                    },
+                    text: '',
+                    x: -10
+                },
+                zIndex: 3
+            }],
+            accessibility: {
+                rangeDescription: ''
+            }
+        },
+
+        tooltip: {
+            useHTML: true,
+            headerFormat: '<table>',
+            pointFormat: '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
+                '<tr><th>평균기온:</th><td>{point.x}ºC</td></tr>' +
+                '<tr><th>난방지수:</th><td>{point.y}</td></tr>' +
+                '<tr><th>수요량:</th><td>{point.z}%</td></tr>',
+            footerFormat: '</table>',
+            followPointer: true
+        },
+
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+
+        series: [{
+            data: data_list1
+        }]
+
+    });
+
+
+
+    /*********************** Graph2 - 수요가수 ****************************/
+
+    Highcharts.chart('container2', {
+        chart: {
+            zoomType: 'xy'
+        },
+        title: {
+            text: '기간에 따른 수요가수 및 수요량 변화'
+        },
+        xAxis: [{
+            categories: {{ year2 }},
+            crosshair: true
+        }],
+        yAxis: [{ // Primary yAxis
+            labels: {
+                format: '{value} ton',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            title: {
+                text: '수요량',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            }
+        }, { // Secondary yAxis
+            title: {
+                text: '수요가수',
+                style: {
+                    color: Highcharts.getOptions().colors[0]
+                }
+            },
+            labels: {
+                format: '{value}',
+                style: {
+                    color: Highcharts.getOptions().colors[0]
+                }
+            },
+            opposite: true
+        }],
+        tooltip: {
+            shared: true
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            x: 120,
+            verticalAlign: 'top',
+            y: 100,
+            floating: true,
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || // theme
+                'rgba(255,255,255,0.25)'
+        },
+        series: [{
+            name: '수요가수',
+            type: 'column',
+            yAxis: 1,
+            data: {{ household_avg2 }},
+            tooltip: {
+                valueSuffix: ''
+            }
+
+        }, {
+            name: '수요량',
+            type: 'spline',
+            data: {{ demand_avg2 }},
+            tooltip: {
+                valueSuffix: 'ton'
+            }
+        }]
+    });
+
+
+    /*********************** Graph3 - 상대가격 ****************************/
+    // Data retrieved from https://www.ssb.no/energi-og-industri/olje-og-gass/statistikk/sal-av-petroleumsprodukt/artikler/auka-sal-av-petroleumsprodukt-til-vegtrafikk
+    Highcharts.chart('container3', {
+        title: {
+            text: '연도별 도시가스 상대가격'
+        },
+        xAxis: {
+            categories: {{ year3 }}
+        },
+        yAxis: [{ // primary yAxis
+            labels:{
+                format: '{value}',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            title: {
+                text: '생산자물가지수',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            }
+        }, { // Secondary yAxis
+            labels:{
+                format: '{value}',
+                style: {
+                    color: Highcharts.getOptions().colors[2]
+                }
+            },
+            title: {
+                text: '상대가격',
+                style: {
+                    color: Highcharts.getOptions().colors[2]
+                }
+            },
+            opposite: true
+        }],
+        labels: {
+            items: [{
+                html: '',
+                style: {
+                    left: '50px',
+                    top: '18px',
+                    color: ( // theme
+                        Highcharts.defaultOptions.title.style &&
+                        Highcharts.defaultOptions.title.style.color
+                    ) || 'black'
+                }
+            }]
+        },
+        series: [{
+            type: 'column',
+            name: '원유정제처리제품 생산자물가지수',
+            data: {{ oilproducerprice3 }}
+        }, {
+            type: 'column',
+            name: '도시가스 생산자물가지수',
+            data: {{ gasproducerprice3 }}
+        }, {
+            type: 'spline',
+            name: '상대가격',
+            yAxis: 1,
+            data: {{ relativeprice3 }},
+            marker: {
+                lineWidth: 2,
+                lineColor: Highcharts.getOptions().colors[3],
+                fillColor: 'white'
+            }
+        }]
+    });
+
+    /*********************** Graph4 ****************************/
+    Highcharts.chart('container4', {
+        chart: {
+            type: 'areaspline'
+        },
+        title: {
+            text: '수입물가지수, 수입물량지수, 수입금액지수 변화'
+        },
+        subtitle: {
+            align: 'center',
+            text: ''
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            verticalAlign: 'top',
+            x: 120,
+            y: 70,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF'
+        },
+        xAxis: {
+            plotBands: [{ // Highlight the two last years
+                from: 2019,
+                to: 2020,
+                color: '#ffffff'
+            }]
+            , min: 1988
+        },
+        yAxis: {
+            title: {
+                text: '(2015=100)'
+            }
+        },
+        tooltip: {
+            shared: true,
+            headerFormat: '<b>{point.x}</b><br>'
+        },
+        credits: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                pointStart: 1988
+            },
+            areaspline: {
+                fillOpacity: 0.5
+            }
+        },
+        series: [{
+            name: '수입물가지수',
+            data: {{ importprice_list }}
+        }, {
+            name: '수입물량지수',
+            data: {{ importamount_list }}
+        }, {
+            name: '수입금액지수',
+            data: {{ importcost_list }}
+        }]
+    });
+
+    /*********************** Graph5 ****************************/
+
+
+ };
+
+</script>
+
+</html>
