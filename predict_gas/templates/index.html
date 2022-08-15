@@ -9,13 +9,23 @@
 </head>
 <body>
 
-<h1>Hello World</h1>
-<div style="height=500px; width=200px; border=1px solid red;">
+<h1>Team Phoenix</h1>
+
+<div>
+	<a href="/supply">Go Supply</a>
+    <a href="/demand">Go Demand</a>
+    <a href="/supplyfactor">Go SupplyFactor</a>
+    <a href="/demandfactor">Go DemandFactor</a>
+
+</div>
+<div>
     {% for region in regions %}
         <h2>{{ region.regionid}}</h2>
         <p>{{ region.regionname }}</p>
     {% endfor %}
 </div>
+
+
 
 </body>
 </html>

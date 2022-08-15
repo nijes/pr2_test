@@ -69,7 +69,7 @@ class Importindex(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'importIndex'
+        db_table = 'importindex'
 
 
 class Region(models.Model):
@@ -104,3 +104,14 @@ class Supply(models.Model):
     class Meta:
         managed = False
         db_table = 'supply'
+
+
+class Lngimport(models.Model):
+    lngimportid = models.AutoField(db_column='lngImportId', primary_key=True)  # Field name made lowercase.
+    year = models.IntegerField(blank=True, null=True)
+    import_field = models.IntegerField(db_column='import', blank=True, null=True)  # Field renamed because it was a Python reserved word.
+    demand = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'lngimport'
