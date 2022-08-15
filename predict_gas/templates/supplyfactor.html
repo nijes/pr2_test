@@ -1,0 +1,607 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>문제해결 빅데이터 활용 프로젝트</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/phoenix_logo.png' %}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)
+        <link href="/css/styles.css" rel="stylesheet" />-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/data.js"></script>
+        <script src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://code.highcharts.com/modules/networkgraph.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    </head>
+
+    <body>
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-lg-5">
+                <img style="width:30px; height:30px;" src="{% static 'assets/phoenix_logo.png' %}">
+                <a class="navbar-brand" href="/">Team Pheonix</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/supply">Supply</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/demand">Demand</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/supplyfactor">SupplyFactor</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/demandfactor">DemandFactor</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- navbar end -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content" class="col-11 mx-auto">
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-white">Dashboard</h1>
+                    </div>
+
+
+                    <!-- Content Row1 -->
+                    <div class="row">
+                        <!-- Graph1 -->
+                        <div class="col-xl-5">
+                            <div class="card shadow mb-4">
+                                <div class="card-header fw-bold">
+                                    도시가스 공급 과정
+                                </div>
+                                <div class="card-body">
+                                    <!-- 도시가스 공급 네트워크 그래프 -->
+                                    <figure class="highcharts-figure container-fluid">
+                                            <div id="container1">
+                                            </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Graph1 End -->
+                        <!-- Graph2 -->
+                        <div class="col-xl-7">
+                            <div class="card shadow mb-4">
+                                <div class="card-header fw-bold">
+                                    지역별 공급량 분포
+                                </div>
+                                <div class="card-body">
+                                    <br><br>
+                                    <!-- 지역별 공급량 박스 그래프 -->
+                                    <div class="container-fluid">
+                                            <div id="tester"></div>
+                                    </div>
+                                    <br><br>
+                               </div>
+                            </div>
+                        </div>
+                        <!-- Graph2 End -->
+                    </div>
+                    <!-- Content Row1 End -->
+
+                    <!-- Content Row2 -->
+                    <div class="row">
+                        <!-- Graph3 -->
+                        <div class="col-xl-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header fw-bold">
+                                    지역별 도시가스 공급량 비교
+                                </div>
+                                <div class="card-body">
+                                    <!-- 연도별 도입량 및 공급량 차이 그래프 -->
+                                    <figure class="highcharts-figure container-fluid">
+                                            <div id="container2">
+                                            </div>
+                                    </figure>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content Row2 End -->
+
+                    <!-- Content Row3 -->
+<!--                    <div class="row">-->
+<!--                        &lt;!&ndash; Graph3 &ndash;&gt;-->
+<!--                        <div class="col-xl-12">-->
+<!--                            <div class="card shadow mb-4">-->
+<!--                                <div class="card-header fs-6 fw-bold">-->
+<!--                                    지역별 공급량 분포-->
+<!--                                </div>-->
+<!--                                <div class="card-body">-->
+<!--                                    &lt;!&ndash; 지역별 공급량 박스 그래프 &ndash;&gt;-->
+<!--                                    <div id="tester"></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Graph3 End &ndash;&gt;-->
+<!--                    </div>-->
+                    <!-- Content Row3 End -->
+
+                    <!-- Content Row4 -->
+                    <div class="row">
+                        <!-- Graph4 -->
+                        <div class="col-xl-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header fs-6 fw-bold">
+                                    공급량 요인 인자 상관관계도
+                                </div>
+                                <div class="card-body">
+                                    <!-- Scatter 그래프 X9 -->
+                                    <div class="row">
+                                        <figure class="highcharts-figure col-4">
+                                            <div id="container4_1"></div>
+                                        </figure>
+                                        <figure class="highcharts-figure col-4">
+                                            <div id="container4_2"></div>
+                                        </figure>
+                                        <figure class="highcharts-figure col-4">
+                                            <div id="container4_3"></div>
+                                        </figure>
+                                    </div>
+                                    <div class="row">
+                                        <figure class="highcharts-figure col-4">
+                                            <div id="container4_4"></div>
+                                        </figure>
+                                        <figure class="highcharts-figure col-4">
+                                            <div id="container4_5"></div>
+                                        </figure>
+                                        <figure class="highcharts-figure col-4">
+                                            <div id="container4_6"></div>
+                                        </figure>
+                                    </div>
+                                    <div class="row">
+                                        <figure class="highcharts-figure col-4">
+                                            <div id="container4_7"></div>
+                                        </figure>
+                                        <figure class="highcharts-figure col-4">
+                                            <div id="container4_8"></div>
+                                        </figure>
+                                        <figure class="highcharts-figure col-4">
+                                            <div id="container4_9"></div>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Graph4 End -->
+                    </div>
+                    <!-- Content Row4 End -->
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- Main content end -->
+        </div>
+        <!-- Cont Wrapper end -->
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Team Phoenix 2022</p></div>
+        </footer>
+
+    </div>
+    <!-- Page Wrapper end -->
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    </body>
+
+<script>
+ window.onload=function(){
+
+    /*********************** Graph1 ***************************/
+
+    Highcharts.addEvent(
+        Highcharts.Series,
+        'afterSetOptions',
+        function (e) {
+            var colors = Highcharts.getOptions().colors,
+                i = 0,
+                nodes = {};
+
+            if (
+                this instanceof Highcharts.seriesTypes.networkgraph &&
+                e.options.id === 'lang-tree'
+            ) {
+                e.options.data.forEach(function (link) {
+
+                    if (link[0] === '한국가스공사') {
+                        nodes['한국가스공사'] = {
+                            id: '한국가스공사',
+                            marker: {
+                                radius: 20
+                            }
+                        };
+                        nodes[link[1]] = {
+                            id: link[1],
+                            marker: {
+                                radius: 10
+                            },
+                            color: colors[i++]
+                        };
+                    } else if (nodes[link[0]] && nodes[link[0]].color) {
+                        nodes[link[1]] = {
+                            id: link[1],
+                            color: nodes[link[0]].color
+                        };
+                    }
+                });
+
+                e.options.nodes = Object.keys(nodes).map(function (id) {
+                    return nodes[id];
+                });
+            }
+        }
+    );
+
+    Highcharts.chart('container1', {
+        chart: {
+            type: 'networkgraph',
+            height: '100%'
+        },
+        title: { text: '도시가스 공급 관계도' },
+        subtitle: { text: 'A Force-Directed Network Graph in Highcharts' },
+        plotOptions: {
+            networkgraph: {
+                keys: ['from', 'to'],
+                layoutAlgorithm: {
+                    enableSimulation: true,
+                    friction: -0.9
+                }
+            }
+        },
+        series: [{
+            accessibility: {
+                enabled: false
+            },
+            dataLabels: {
+                enabled: true,
+                linkFormat: ''
+            },
+            id: 'lang-tree',
+            data: [
+                ['한국가스공사', '서울'],
+                ['한국가스공사', '부산'],
+                ['한국가스공사', '대구'],
+                ['한국가스공사', '인천'],
+                ['한국가스공사', '광주'],
+                ['한국가스공사', '대전'],
+                ['한국가스공사', '울산'],
+                ['한국가스공사', '경기'],
+                ['한국가스공사', '강원'],
+                ['한국가스공사', '충북'],
+                ['한국가스공사', '충남'],
+                ['한국가스공사', '전북'],
+                ['한국가스공사', '전남'],
+                ['한국가스공사', '경북'],
+                ['한국가스공사', '경남'],
+                ['한국가스공사', '제주'],
+                ['한국가스공사', '세종'],
+                ['서울', '코원에너지서비스'],
+                ['서울', '예스코'],
+                ['서울', '서울도시가스'],
+                ['서울', '귀뚜라미에너지'],
+                ['서울', '삼천리'],
+                ['서울', '대륜E&S'],
+                ['서울', '인천도시가스'],
+                ['부산', '부산도시가스'],
+                ['대구', '대성에너지'],
+                ['인천', '인천도시가스'],
+                ['광주', '해양에너지'],
+                ['대전', 'CNCITY에너지'],
+                ['울산', '경동도시가스'],
+                ['경기도', '코원에너지서비스'],
+                ['경기도', '예스코'],
+                ['경기도', '서울도시가스'],
+                ['경기도', '삼천리'],
+                ['경기도', '대륜E&S'],
+                ['경기도', '인천도시가스'],
+                ['강원', '강원도시가스'],
+                ['강원', '참빛도시가스'],
+                ['강원', '참빛원주도시가스'],
+                ['강원', '참빛영동도시가스'],
+                ['강원', '명성파워그린'],
+                ['충북', '참빛충북도시가스'],
+                ['충북', '충청에너지서비스'],
+                ['충남', '미래엔서해에너지'],
+                ['충남', 'JB'],
+                ['전북', '군산도시가스'],
+                ['전북', '전북에너지서비스'],
+                ['전북', '전북도시가스'],
+                ['전남', '전남도시가스'],
+                ['전남', '대화도시가스'],
+                ['전남', '목포도시가스'],
+                ['경북', '대성청정에너지'],
+                ['경북', '영남에너지서비스'],
+                ['경북', '서라벌도시가스'],
+                ['경남', '경남에너지'],
+                ['경남', '지에스이'],
+                ['제주', '제주도시가스'],
+                ['세종', '세종도시가스']
+            ]
+        }]
+    });
+
+
+
+    /*********************** Graph2 ***************************/
+    var category_list2 = []
+        for (var i=2001; i < 2020+1; i++){
+              category_list2.push(String(i));
+        }
+    var series_list2 = []
+        {% if data %}
+            {% for key,value in data.percentage.items %}
+                series_list2.push({name: '{{key}}', data:{{value}}})
+            {% endfor %}
+        {% endif %}
+
+    Highcharts.chart('container2', {
+        chart: { type: 'area' },
+        title: { text: '각 시도별 도시가스 공급량' },
+        accessibility: { point: { valueDescriptionFormat: '{index}. {point.category}, {point.y:,.0f} ton, {point.percentage:.1f}%.' } },
+        xAxis: { categories: category_list2, tickmarkPlacement: 'on', title: { enabled: false } },
+        yAxis: { labels: { format: '{value}%' }, title: { enabled: false } },
+        tooltip: {
+            pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} ton)<br/>',
+            split: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'percent',
+                lineColor: '#ffffff',
+                lineWidth: 1,
+                marker: { lineWidth: 1, lineColor: '#ffffff' }
+            }
+        },
+        series: series_list2
+    });
+
+
+
+     /*********************** Graph3 ***************************/
+     var data = []
+
+    {% for region,supply_list in data.box.items %}
+        data.push({y:{{supply_list}}, type:'box', name:'{{region}}'})
+    {% endfor %}
+
+    Plotly.newPlot('tester', data);
+
+
+
+
+    /*********************** Graph4 ***************************/
+    Highcharts.chart('container4_1', {
+        chart: { type: 'scatter', zoomType: 'xy' },
+        title: { text: '공급량, 수요량 간 산점도' },
+        //subtitle: { text: 'Source: Heinz  2003' },
+        xAxis: { title: { enabled: true, text: '공급량(ton)' },
+                 startOnTick: true, endOnTick: true, showLastLabel: true, min: 0 },
+        yAxis: { title: { text: '수요량(ton)' } },
+        legend: { layout: 'vertical', align: 'left', verticalAlign: 'top', x: 100, y: 70,
+            floating: true, backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+            borderWidth: 1 },
+        plotOptions: {
+            scatter: { marker: { radius: 5, states: { hover: { enabled: true, lineColor: 'rgb(100,100,100)' } } },
+                       states: { hover: { marker: { enabled: false } } },
+                       tooltip: { headerFormat: '<b>{series.name}</b><br>', pointFormat: '{point.x} ton, {point.y} ton' }
+            } },
+        series: [//{ type: 'line', name: '공급량', color: '#FFFFFF',
+                   //data: [[150, 50], [200, 80]], marker: { enabled: false },
+                   //states: { hover: { lineWidth: 0 } },
+                   //enableMouseTracking: false },
+                 { name: '수요량', color: 'rgba(223, 83, 83, .5)', data: {{ data.scatter.demand }} }]
+        });
+
+    Highcharts.chart('container4_2', {
+        chart: { type: 'scatter', zoomType: 'xy' },
+        title: { text: '공급량, 평균기온 간 산점도' },
+        //subtitle: { text: 'Source: Heinz  2003' },
+        xAxis: { title: { enabled: true, text: '공급량(ton)' },
+                 startOnTick: true, endOnTick: true, showLastLabel: true },
+        yAxis: { title: { text: '평균기온(ºC)' }, max: 50 },
+        legend: { layout: 'vertical', align: 'left', verticalAlign: 'top', x: 100, y: 70,
+            floating: true, backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+            borderWidth: 1 },
+        plotOptions: {
+            scatter: { marker: { radius: 5, states: { hover: { enabled: true, lineColor: 'rgb(100,100,100)' } } },
+                       states: { hover: { marker: { enabled: false } } },
+                       tooltip: { headerFormat: '<b>{series.name}</b><br>', pointFormat: '{point.x} ton, {point.y} ºC' }
+            } },
+        series: [//{ type: 'line', name: 'Regression Line', color: '#FFFFFF',
+                   //data: [[150, 50], [200, 80]], marker: { enabled: false },
+                   //states: { hover: { lineWidth: 0 } },
+                   //enableMouseTracking: false },
+                 { name: '평균기온', color: 'rgba(223, 83, 83, .5)', data: {{ data.scatter.avgtemp }} }]
+        });
+
+    Highcharts.chart('container4_3', {
+        chart: { type: 'scatter', zoomType: 'xy' },
+        title: { text: '공급량, 난방지수 간 산점도' },
+        //subtitle: { text: 'Source: Heinz  2003' },
+        xAxis: { title: { enabled: true, text: '공급량(ton)' },
+                 startOnTick: true, endOnTick: true, showLastLabel: true },
+        yAxis: { title: { text: '난방지수' } },
+        legend: { layout: 'vertical', align: 'left', verticalAlign: 'top', x: 100, y: 70,
+            floating: true, backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+            borderWidth: 1 },
+        plotOptions: {
+            scatter: { marker: { radius: 5, states: { hover: { enabled: true, lineColor: 'rgb(100,100,100)' } } },
+                       states: { hover: { marker: { enabled: false } } },
+                       tooltip: { headerFormat: '<b>{series.name}</b><br>', pointFormat: '{point.x} , {point.y} ton' }
+            } },
+        series: [//{ type: 'line', name: 'Regression Line', color: '#FFFFFF',
+                   //data: [[150, 50], [200, 80]], marker: { enabled: false },
+                   //states: { hover: { lineWidth: 0 } },
+                   //enableMouseTracking: false },
+                 { name: '난방지수', color: 'rgba(223, 83, 83, .5)', data: {{ data.scatter.heatindex }} }]
+        });
+
+    Highcharts.chart('container4_4', {
+        chart: { type: 'scatter', zoomType: 'xy' },
+        title: { text: '공급량, 수입물가지수 간 산점도' },
+        //subtitle: { text: 'Source: Heinz  2003' },
+        xAxis: { title: { enabled: true, text: '공급량(ton)' },
+                 startOnTick: true, endOnTick: true, showLastLabel: true },
+        yAxis: { title: { text: '수입물가지수(2015=100)' } },
+        legend: { layout: 'vertical', align: 'left', verticalAlign: 'top', x: 100, y: 70,
+            floating: true, backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+            borderWidth: 1 },
+        plotOptions: {
+            scatter: { marker: { radius: 5, states: { hover: { enabled: true, lineColor: 'rgb(100,100,100)' } } },
+                       states: { hover: { marker: { enabled: false } } },
+                       tooltip: { headerFormat: '<b>{series.name}</b><br>', pointFormat: '{point.x} ton, {point.y}' }
+            } },
+        series: [//{ type: 'line', name: 'Regression Line', color: '#FFFFFF',
+                   //data: [[150, 50], [200, 80]], marker: { enabled: false },
+                   //states: { hover: { lineWidth: 0 } },
+                   //enableMouseTracking: false },
+                 { name: '수입물가지수', color: 'rgba(223, 83, 83, .5)', data: {{ data.scatter.importpriceindex }} }]
+        });
+
+    Highcharts.chart('container4_5', {
+        chart: { type: 'scatter', zoomType: 'xy' },
+        title: { text: '공급량, 수입물량지수 간 산점도' },
+        //subtitle: { text: 'Source: Heinz  2003' },
+        xAxis: { title: { enabled: true, text: '공급량(ton)' },
+                 startOnTick: true, endOnTick: true, showLastLabel: true },
+        yAxis: { title: { text: '수입물량지수(2015=100)' } },
+        legend: { layout: 'vertical', align: 'left', verticalAlign: 'top', x: 100, y: 70,
+            floating: true, backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+            borderWidth: 1 },
+        plotOptions: {
+            scatter: { marker: { radius: 5, states: { hover: { enabled: true, lineColor: 'rgb(100,100,100)' } } },
+                       states: { hover: { marker: { enabled: false } } },
+                       tooltip: { headerFormat: '<b>{series.name}</b><br>', pointFormat: '{point.x} ton, {point.y}' }
+            } },
+        series: [//{ type: 'line', name: 'Regression Line', color: '#FFFFFF',
+                   //data: [[150, 50], [200, 80]], marker: { enabled: false },
+                   //states: { hover: { lineWidth: 0 } },
+                   //enableMouseTracking: false },
+                 { name: '수입물량지수', color: 'rgba(223, 83, 83, .5)', data: {{ data.scatter.importamountindex }} }]
+        });
+
+    Highcharts.chart('container4_6', {
+        chart: { type: 'scatter', zoomType: 'xy' },
+        title: { text: '공급량, 수입금액지수 간 산점도' },
+        //subtitle: { text: 'Source: Heinz  2003' },
+        xAxis: { title: { enabled: true, text: '공급량(ton)' },
+                 startOnTick: true, endOnTick: true, showLastLabel: true },
+        yAxis: { title: { text: '수입금액지수' } },
+        legend: { layout: 'vertical', align: 'left', verticalAlign: 'top', x: 100, y: 70,
+            floating: true, backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+            borderWidth: 1 },
+        plotOptions: {
+            scatter: { marker: { radius: 5, states: { hover: { enabled: true, lineColor: 'rgb(100,100,100)' } } },
+                       states: { hover: { marker: { enabled: false } } },
+                       tooltip: { headerFormat: '<b>{series.name}</b><br>', pointFormat: '{point.x} ton, {point.y}' }
+            } },
+        series: [//{ type: 'line', name: 'Regression Line', color: '#FFFFFF',
+                   //data: [[150, 50], [200, 80]], marker: { enabled: false },
+                   //states: { hover: { lineWidth: 0 } },
+                   //enableMouseTracking: false },
+                 { name: '수입금액지수', color: 'rgba(223, 83, 83, .5)', data: {{ data.scatter.importcostindex }} }]
+        });
+
+
+    Highcharts.chart('container4_7', {
+        chart: { type: 'scatter', zoomType: 'xy' },
+        title: { text: '공급량, 수요가수 간 산점도' },
+        //subtitle: { text: 'Source: Heinz  2003' },
+        xAxis: { title: { enabled: true, text: '공급량(ton)' },
+                 startOnTick: true, endOnTick: true, showLastLabel: true },
+        yAxis: { title: { text: '수요가수' } },
+        legend: { layout: 'vertical', align: 'left', verticalAlign: 'top', x: 100, y: 70,
+            floating: true, backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+            borderWidth: 1 },
+        plotOptions: {
+            scatter: { marker: { radius: 5, states: { hover: { enabled: true, lineColor: 'rgb(100,100,100)' } } },
+                       states: { hover: { marker: { enabled: false } } },
+                       tooltip: { headerFormat: '<b>{series.name}</b><br>', pointFormat: '{point.x} ton, {point.y}' }
+            } },
+        series: [//{ type: 'line', name: 'Regression Line', color: '#FFFFFF',
+                   //data: [[150, 50], [200, 80]], marker: { enabled: false },
+                   //states: { hover: { lineWidth: 0 } },
+                   //enableMouseTracking: false },
+                 { name: '수요가수', color: 'rgba(223, 83, 83, .5)', data: {{ data.scatter.household }} }]
+        });
+
+    Highcharts.chart('container4_8', {
+        chart: { type: 'scatter', zoomType: 'xy' },
+        title: { text: '공급량, 도시가스요금 간 산점도' },
+        //subtitle: { text: 'Source: Heinz  2003' },
+        xAxis: { title: { enabled: true, text: '공급량(ton)' },
+                 startOnTick: true, endOnTick: true, showLastLabel: true, min: 5000 },
+        yAxis: { title: { text: '평균 도시가스요금(원)' }, min: 6000 },
+        legend: { layout: 'vertical', align: 'left', verticalAlign: 'top', x: 100, y: 70,
+            floating: true, backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+            borderWidth: 1 },
+        plotOptions: {
+            scatter: { marker: { radius: 5, states: { hover: { enabled: true, lineColor: 'rgb(100,100,100)' } } },
+                       states: { hover: { marker: { enabled: false } } },
+                       tooltip: { headerFormat: '<b>{series.name}</b><br>', pointFormat: '{point.x} ton, {point.y} 원' }
+            } },
+        series: [//{ type: 'line', name: 'Regression Line', color: '#FFFFFF',
+                   //data: [[150, 50], [200, 80]], marker: { enabled: false },
+                   //states: { hover: { lineWidth: 0 } },
+                   //enableMouseTracking: false },
+                 { name: '도시가스요금', color: 'rgba(223, 83, 83, .5)', data: {{ data.scatter.citygascost }} }]
+        });
+
+    Highcharts.chart('container4_9', {
+        chart: { type: 'scatter', zoomType: 'xy' },
+        title: { text: '공급량, 상대가격 간 산점도' },
+        //subtitle: { text: 'Source: Heinz  2003' },
+        xAxis: { title: { enabled: true, text: '공급량(ton)' },
+                 startOnTick: true, endOnTick: true, showLastLabel: true, min: 0 },
+        yAxis: { title: { text: '상대가격' }, max: 1.5 },
+        legend: { layout: 'vertical', align: 'left', verticalAlign: 'top', x: 100, y: 70,
+            floating: true, backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+            borderWidth: 1 },
+        plotOptions: {
+            scatter: { marker: { radius: 5, states: { hover: { enabled: true, lineColor: 'rgb(100,100,100)' } } },
+                       states: { hover: { marker: { enabled: false } } },
+                       tooltip: { headerFormat: '<b>{series.name}</b><br>', pointFormat: '{point.x} ton, {point.y}' }
+            } },
+        series: [//{ type: 'line', name: 'Regression Line', color: '#FFFFFF',
+                   //data: [[150, 50], [200, 80]], marker: { enabled: false },
+                   //states: { hover: { lineWidth: 0 } },
+                   //enableMouseTracking: false },
+                 { name: '상대가격', color: 'rgba(223, 83, 83, .5)', data: {{ data.scatter.relativeprice }} }]
+        });
+
+ };
+
+</script>
+
+</html>
