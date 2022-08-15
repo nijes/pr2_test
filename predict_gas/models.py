@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class AvgTemp(models.Model):
     avgtempid = models.IntegerField(db_column='avgtempId', primary_key=True)  # Field name made lowercase.
     year = models.IntegerField()
