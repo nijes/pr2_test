@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'predict_gas',
     'bootstrap4'
+    'restdjango'
 ]
 
 MIDDLEWARE = [
