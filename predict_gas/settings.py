@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-mxm1a!j#usnx-0$34_&lq1l3!)rqzz4r+&!ume@g%ae9l*38ik
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.18.182.144.42']
+#ALLOWED_HOSTS = ['.18.182.144.42']
 
 
 
@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'predict_gas',
     'bootstrap4'
-    'restdjango'
 ]
 
 MIDDLEWARE = [
