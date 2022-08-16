@@ -545,9 +545,9 @@
             title: {
                 text: '도시가스 요금'
             },
-            accessibility: {
-                description: ''
-            }
+            // accessibility: {
+            //     description: ''
+            // }
 
         },
 
@@ -555,27 +555,14 @@
             title: {
                 text: '연도'
             },
-            accessibility: {
-                description: ''
-            },
+            // accessibility: {
+            //     description: ''
+            // },
             categories: {{ year5 }}
         },
 
         tooltip: {
             valueSuffix: '원'
-        },
-
-        plotOptions: {
-            series: {
-                point: {
-                    events: {
-                        click: function () {
-                            window.location.href = this.series.options.website;
-                        }
-                    }
-                },
-                cursor: 'pointer'
-            }
         },
 
         series: [
