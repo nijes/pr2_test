@@ -146,7 +146,7 @@
                                       </div>
                                       <div class="btn-group mx-3 my-1" role="group" aria-label="Second group">
                                         <button type="button" class="btn btn-secondary fs-6" style="width:40%;">시작</button>
-                                        <select class="form-select" id="select_startyear" aria-label="Default select example" style="width:8rem;">
+                                        <select class="form-select" id="select_startyear" onchange="inquiry()" aria-label="Default select example" style="width:8rem;">
                                           <option value="2001" selected>2001</option>
                                           <option value="2002">2002</option>
                                           <option value="2003">2003</option>
@@ -171,7 +171,7 @@
                                       </div>
                                       <div class="btn-group mx-3 my-1" role="group" aria-label="Third group">
                                         <button type="button" class="btn btn-secondary fs-6" style="width:40%;">끝</button>
-                                        <select class="form-select" id="select_endyear" aria-label="Default select example" style="width:8rem;">
+                                        <select class="form-select" id="select_endyear" onchange="inquiry()" aria-label="Default select example" style="width:8rem;">
                                           <option value="2001">2001</option>
                                           <option value="2002">2002</option>
                                           <option value="2003">2003</option>
@@ -194,9 +194,9 @@
                                           <option value="2020" selected>2020</option>
                                         </select>
                                       </div>
-                                      <div class="btn-group mx-3 my-1" role="group" aria-label="Forth group">
-                                        <button type="button" class="btn btn-custom fs-6 fw-bold" onclick="inquiry()">조회</button>
-                                      </div>
+<!--                                      <div class="btn-group mx-3 my-1" role="group" aria-label="Forth group">-->
+<!--                                        <button type="button" class="btn btn-custom fs-6 fw-bold" onclick="inquiry()">조회</button>-->
+<!--                                      </div>-->
                                     </div>
                                     <br><br>
                                     <!-- 기간에 따른 공급량 변화 그래프 -->
@@ -451,7 +451,7 @@
             area_select(area_2, 2, '부산');
           });
           area_2.addEventListener('mouseover', function(){
-            area_mouseover(area_1);
+            area_mouseover(area_2);
           });
           area_2.addEventListener('mouseout', function(){
             area_mouseout(area_2);
@@ -794,6 +794,7 @@
       area.classList.add('select_region');
       document.getElementById('button_region').textContent = regionname
       document.getElementById('select_region').textContent = regionid
+      inquiry();
     }
 
 
