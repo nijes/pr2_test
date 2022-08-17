@@ -295,47 +295,47 @@
 
         /************************Graph1***********************/
 
-        var category_list1 = []
-
-        for (var i=2001; i < 2020+1; i++){
-            for (var j=1; j < 13; j++){
-                if(j < 10){
-                        category_list1.push(String(i).concat('/0' + String(j)));
-                    } else {
-                        category_list1.push(String(i).concat('/' + String(j)));
-                    }
-                }
-            }
-
-        var data_list1 = []
-        {% for k,v in data.graph1.items %}
-            data_list1 = data_list1.concat({{v}})
-        {% endfor %}
-
-
-        Highcharts.chart('container1', {
-            title: { text: `2001년부터 2020년까지 서울 가스 공급량` },
-            subtitle: { text: '출처: 한국가스공사'},
-            yAxis: {
-                title: { text: '가스공급량(ton)' }
-            },
-            xAxis: {
-                accessibility: { rangeDescription: `기간: 2001 ~ 2020` },
-                categories: category_list1
-            },
-            legend: { layout: 'vertical', align: 'right', verticalAlign: 'middle' },
-            plotOptions: { series: { label: { connectorAllowed: false } } },
-            series: [{
-                name: `서울`,
-                data: data_list1
-            }],
-            responsive: {
-                rules: [{
-                    condition: { maxWidth: 500 },
-                    chartOptions: {legend: { layout: 'horizontal', align: 'center', verticalAlign: 'bottom' } }
-                }]
-            }
-        });
+        // var category_list1 = []
+        //
+        // for (var i=2001; i < 2020+1; i++){
+        //     for (var j=1; j < 13; j++){
+        //         if(j < 10){
+        //                 category_list1.push(String(i).concat('/0' + String(j)));
+        //             } else {
+        //                 category_list1.push(String(i).concat('/' + String(j)));
+        //             }
+        //         }
+        //     }
+        //
+        // var data_list1 = []
+        // {% for k,v in data.graph1.items %}
+        //     data_list1 = data_list1.concat({{v}})
+        // {% endfor %}
+        //
+        //
+        // Highcharts.chart('container1', {
+        //     title: { text: `2001년부터 2020년까지 서울 가스 공급량` },
+        //     subtitle: { text: '출처: 한국가스공사'},
+        //     yAxis: {
+        //         title: { text: '가스공급량(ton)' }
+        //     },
+        //     xAxis: {
+        //         accessibility: { rangeDescription: `기간: 2001 ~ 2020` },
+        //         categories: category_list1
+        //     },
+        //     legend: { layout: 'vertical', align: 'right', verticalAlign: 'middle' },
+        //     plotOptions: { series: { label: { connectorAllowed: false } } },
+        //     series: [{
+        //         name: `서울`,
+        //         data: data_list1
+        //     }],
+        //     responsive: {
+        //         rules: [{
+        //             condition: { maxWidth: 500 },
+        //             chartOptions: {legend: { layout: 'horizontal', align: 'center', verticalAlign: 'bottom' } }
+        //         }]
+        //     }
+        // });
 
 
         /************************Graph2***********************/
