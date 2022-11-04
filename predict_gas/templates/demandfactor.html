@@ -194,7 +194,7 @@
 
     /*********************** Graph1 - 난방지수&평균기온 ***************************/
     var data_list1 = []
-        {% for col in result1 %}
+        {% for col in context.result1 %}
             data_list1.push({ x: {{ col.avgtemp__avg }}, y: {{ col.heatindex__avg }}, z: {{ col.supply__avg }}, name: '{{ col.month }}월'})
         {% endfor %}
 
@@ -321,7 +321,7 @@
             text: '기간에 따른 수요가수 및 수요량 변화'
         },
         xAxis: [{
-            categories: {{ year2 }},
+            categories: {{ context.year2 }},
             crosshair: true
         }],
         yAxis: [{ // Primary yAxis
@@ -370,7 +370,7 @@
             name: '수요가수',
             type: 'column',
             yAxis: 1,
-            data: {{ household_avg2 }},
+            data: {{ context.household_avg2 }},
             tooltip: {
                 valueSuffix: ''
             }
@@ -378,7 +378,7 @@
         }, {
             name: '수요량',
             type: 'spline',
-            data: {{ demand_avg2 }},
+            data: {{ context.demand_avg2 }},
             tooltip: {
                 valueSuffix: 'ton'
             }
@@ -393,7 +393,7 @@
             text: '연도별 도시가스 상대가격'
         },
         xAxis: {
-            categories: {{ year3 }}
+            categories: {{ context.year3 }}
         },
         yAxis: [{ // primary yAxis
             labels:{
@@ -439,16 +439,16 @@
         series: [{
             type: 'column',
             name: '원유정제처리제품 생산자물가지수',
-            data: {{ oilproducerprice3 }}
+            data: {{ context.oilproducerprice3 }}
         }, {
             type: 'column',
             name: '도시가스 생산자물가지수',
-            data: {{ gasproducerprice3 }}
+            data: {{ context.gasproducerprice3 }}
         }, {
             type: 'spline',
             name: '상대가격',
             yAxis: 1,
-            data: {{ relativeprice3 }},
+            data: {{ context.relativeprice3 }},
             marker: {
                 lineWidth: 2,
                 lineColor: Highcharts.getOptions().colors[3],
@@ -510,13 +510,13 @@
         },
         series: [{
             name: '수입물가지수',
-            data: {{ importprice_list }}
+            data: {{ context.importprice_list }}
         }, {
             name: '수입물량지수',
-            data: {{ importamount_list }}
+            data: {{ context.importamount_list }}
         }, {
             name: '수입금액지수',
-            data: {{ importcost_list }}
+            data: {{ context.importcost_list }}
         }]
     });
 
@@ -558,7 +558,7 @@
             // accessibility: {
             //     description: ''
             // },
-            categories: {{ year5 }}
+            categories: {{ context.year5 }}
         },
 
         tooltip: {
@@ -568,84 +568,84 @@
         series: [
             {
                 name: '서울',
-                data: {{ seoul }},
+                data: {{ context.seoul }},
                 color: colors[2],
                 accessibility: {
                     description: ''
                 }
             }, {
                 name: '부산',
-                data: {{ pusan }},
+                data: {{ context.pusan }},
                 dashStyle: 'ShortDashDot',
                 color: colors[0]
             }, {
                 name: '대구',
-                data: {{ daegu }},
+                data: {{ context.daegu }},
                 dashStyle: 'ShortDot',
                 color: colors[1]
             }, {
                 name: '인천',
-                data: {{ incheon }},
+                data: {{ context.incheon }},
                 dashStyle: 'Dash',
                 color: colors[9]
             }, {
                 name: '광주',
-                data: {{ gwangju }},
+                data: {{ context.gwangju }},
                 dashStyle: 'ShortDot',
                 color: colors[5]
             }, {
                 name: '대전',
-                data: {{daejun}},
+                data: {{ context.daejun }},
                 dashStyle: 'ShortDash',
                 color: colors[3]
             }, {
                 name: '울산',
-                data: {{ ulsan }},
+                data: {{ context.ulsan }},
                 dashStyle: 'ShortDashDot',
                 color: colors[0]
             }, {
                 name: '경기',
-                data: {{ kyeonggi }},
+                data: {{ context.kyeonggi }},
                 dashStyle: 'ShortDot',
                 color: colors[1]
             }, {
                 name: '충북',
-                data: {{ chungbuk }},
+                data: {{ context.chungbuk }},
                 dashStyle: 'Dash',
                 color: colors[9]
             }, {
                 name: '충남',
-                data: {{ chungnam }},
+                data: {{ context.chungnam }},
                 dashStyle: 'ShortDot',
                 color: colors[5]
             }, {
                 name: '전북',
-                data: {{ jeonbuk }},
+                data: {{ context.jeonbuk }},
                 dashStyle: 'ShortDash',
                 color: colors[3]
             }, {
                 name: '전남',
-                data: {{ jeonnam }},
+                data: {{ context.jeonnam }},
                 dashStyle: 'ShortDashDot',
                 color: colors[0]
             }, {
                 name: '경북',
-                data: {{ kyeongbuk }},
+                data: {{ context.kyeongbuk }},
                 dashStyle: 'ShortDot',
                 color: colors[1]
             }, {
                 name: '경남',
-                data: {{ kyeongnam }},
+                data: {{ context.kyeongnam }},
                 dashStyle: 'Dash',
                 color: colors[9]
             }, {
                 name: '제주',
-                data: {{ jeju }},
+                data: {{ context.jeju }},
                 dashStyle: 'ShortDot',
                 color: colors[5]
             }, {
                 name: '세종',
-                data: {{ sejong }},
+                data: {{ context.sejong }},
                 dashStyle: 'ShortDash',
                 color: colors[3]
             }
@@ -665,7 +665,7 @@
                         itemWidth: 150
                     },
                     xAxis: {
-                        categories: {{ year5 }},
+                        categories: {{ context.year5 }},
                         title: ''
                     },
                     yAxis: {
